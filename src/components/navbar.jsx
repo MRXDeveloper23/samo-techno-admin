@@ -29,9 +29,9 @@ const navlinks = [
 
 export const NavLinks = () => {
   return (
-    <nav className="flex flex-col gap-8 px-8">
+    <nav className="flex gap-8 px-8">
       {navlinks.map((navlink, i) => (
-        <Link to={navlink.link} key={i} className="flex gap-4">
+        <Link to={navlink.link} key={i} className="flex gap-4 items-center">
           <img src={navlink.icon} alt="" width={21} height={21} />
           <span className="text-white nunito-text">{navlink.label}</span>
         </Link>

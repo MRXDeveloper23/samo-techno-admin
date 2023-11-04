@@ -29,3 +29,25 @@
 .nunito-text {
   @apply font-nunito font-bold text-[20px];
 }
+
+.custom-search input {
+  border: none;
+  border-radius: 25px;
+  background-color: #eaf0ff;
+  padding: 12px 16px;
+  position: relative;
+}
+.custom-search input:active {
+  box-shadow: none;
+}
+.custom-search button {
+  background-color: transparent !important;
+  right: 10px;
+  border-radius: 25px;
+}
+.custom-search .ant-input-group-addon {
+  background: none;
+}
+.custom-input input {
+  background-color: #eaf0ff;
+}
