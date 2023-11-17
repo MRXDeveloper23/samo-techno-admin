@@ -9,12 +9,14 @@ import { Loading } from "./components/loading";
 
 const Home = lazy(() => import("@/pages/home"));
 const NotFoundPage = lazy(() => import("@/pages/notFoundPage"));
+const LoginPage = lazy(() => import("@/pages/login"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route index path="/" element={<Home />} />
       <Route index path="*" element={<NotFoundPage />} />
+      <Route index path="/login" element={<LoginPage />} />
     </Route>
   )
 );

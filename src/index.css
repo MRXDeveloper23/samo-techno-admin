@@ -51,3 +51,10 @@
 .custom-input input {
   background-color: #eaf0ff;
 }
+.custom-input2 input {
+  background-color: transparent;
+}
+.custom-range-picker .ant-picker-input input {
+  font-size: 12px;
+  font-family: "Nunito", "sans-serif";
+}

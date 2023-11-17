@@ -6,6 +6,8 @@ import Notifiation from "@/assets/icons/notification.svg";
 import Person from "@/assets/icons/person.svg";
 import Arrow from "@/assets/icons/arrow.svg";
 import { Button, Input } from "antd";
+import { Card } from "./card";
+import { StatChartBlock } from "./statChartBlock";
 
 export const MainContent = () => {
   const onSearch = (value, _e, info) => console.log(info?.source, value);
@@ -51,6 +53,12 @@ export const MainContent = () => {
           </Button>
         </div>
       </div>
+      <div className="flex flex-wrap my-8 gap-4">
+        <Card title={"Ombordagi mahsulotlar"} />
+        <Card title={"Kirim"} />
+        <Card title={"Chiqim"} />
+      </div>
+      <StatChartBlock />
     </Container>
   );
 };

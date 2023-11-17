@@ -9,10 +9,6 @@ export const Header = () => {
           <div className="flex items-center justify-center w-[90px] h-[90px] bg-white rounded-full">
             <img src={ProfileIcon} alt="profile" />
           </div>
-          <span className="text-white nunito-text text-center">
-            Samo Techno
-          </span>
-          <hr className="w-[149px]" />
         </div>
         <NavLinks />
       </div>
