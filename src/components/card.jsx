@@ -24,21 +24,21 @@ export const Card = ({ title }) => {
   };
   return (
     <div className="bg-[#F6F6F7] rounded-[26px] w-[250px] h-[327px]">
-      <p className="px-[20px] pt-[18px] pb-[4px] underline text-[#C81515]">
+      <p className="px-[20px] pt-[18px] pb-[4px] underline text-[#C81515] cursor-pointer">
         {title}
       </p>
       <hr className="border-b-[3px] h-[1px] border-dashed" />
       <CustomTabs
-        classes="w-full py-4 px-4"
+        classes="w-full py-4 px-2"
         panes={tabs}
         onChangeTab={changeTabHandler}
         tabBarClasses={
-          "flex items-center justify-center w-[73px] h-[23px] gap-2 text-center bg-[#D9E3F0] border ring-white/50 text-primary border-white/20 font-normal font-nunito text-[11px]"
+          "flex items-center justify-center w-[80px] h-[28px] gap-2 text-center bg-[#D9E3F0] border ring-white/50 text-primary border-white/20 font-normal font-nunito text-[14px]"
         }
         activeTabBarClasses={"!bg-primary !text-white"}
       />
       <RangePicker
-        className="mx-4 h-[23px] text-[11px] font-nunito text-[#696969] bg-[#EAF0FF] rounded-[13px] custom-range-picker"
+        className="mx-4 h-[23px] text-[14px] font-nunito text-[#696969] bg-[#EAF0FF] rounded-[13px] custom-range-picker"
         placeholder={["Sanadan", "Sanagacha"]}
       />
       <div className="mx-4 my-4">

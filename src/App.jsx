@@ -10,12 +10,19 @@ import { Loading } from "./components/loading";
 const Home = lazy(() => import("@/pages/home"));
 const NotFoundPage = lazy(() => import("@/pages/notFoundPage"));
 const LoginPage = lazy(() => import("@/pages/login"));
+const TradeHistoryPage = lazy(() => import("@/pages/tradeHistory"));
+const ProductCreate = lazy(() => import("@/components/productCreate"));
+const Layout = lazy(() => import("@/components/layout"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route index path="/" element={<Home />} />
-      <Route index path="*" element={<NotFoundPage />} />
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="product/create" element={<ProductCreate />} />
+        <Route path="trade-history" element={<TradeHistoryPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
       <Route index path="/login" element={<LoginPage />} />
     </Route>
   )

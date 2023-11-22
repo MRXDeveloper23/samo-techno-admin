@@ -26,6 +26,24 @@
   src: url("./assets/fonts/Nunito/static/Nunito-Bold.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 500;
+  src: url("./assets/fonts/Montserrat/static/Montserrat-Medium.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 600;
+  src: url("./assets/fonts/Montserrat/static/Montserrat-SemiBold.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  src: url("./assets/fonts/Montserrat/static/Montserrat-Bold.ttf")
+    format("truetype");
+}
 .nunito-text {
   @apply font-nunito font-bold text-[20px];
 }

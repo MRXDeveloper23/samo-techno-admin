@@ -1,5 +1,6 @@
 import ProfileIcon from "@/assets/icons/profile.svg";
 import { NavLinks } from "./navbar";
+import { Profile } from "./profile";
 
 export const Header = () => {
   return (
@@ -10,7 +11,10 @@ export const Header = () => {
             <img src={ProfileIcon} alt="profile" />
           </div>
         </div>
-        <NavLinks />
+        <div className="flex flex-col gap-4">
+          <Profile />
+          <NavLinks />
+        </div>
       </div>
     </header>
   );

@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         nunito: ["Nunito", "Sans-serif"],
         ptsans: ["PT Sans", "Sans-serif"],
+        montserrat: ["Montserrat", "Sans-serif"],
       },
     },
   },
