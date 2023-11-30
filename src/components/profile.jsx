@@ -6,6 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
   const navigate = useNavigate();
+  const handleExit = () => {
+    localStorage.removeItem("crm_token");
+    localStorage.removeItem("refresh_token");
+    navigate("/login");
+  };
   return (
     <div className="flex justify-end gap-4 items-center">
       {/* <Search
@@ -29,10 +34,7 @@ export const Profile = () => {
             trigger={"hover"}
             placement="bottomRight"
             content={
-              <div
-                className="cursor-pointer"
-                onClick={() => navigate("/login")}
-              >
+              <div className="cursor-pointer" onClick={handleExit}>
                 Chiqish
               </div>
             }

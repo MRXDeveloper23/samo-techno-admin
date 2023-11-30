@@ -76,3 +76,50 @@
   font-size: 12px;
   font-family: "Nunito", "sans-serif";
 }
+
+.custom-collapse .ant-collapse-header-text {
+  width: 100%;
+  flex: auto !important;
+}
+.custom-collapse .anticon {
+  cursor: pointer;
+}
+
+.tableHeader
+  .ant-pagination
+  .ant-pagination-item:not(.ant-pagination-item-active):hover {
+  transition: 0s;
+  background-color: transparent !important;
+}
+
+.tableHeader .ant-pagination-item.ant-pagination-item-active {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.tableHeader
+  .ant-pagination-item.ant-pagination-item-active
+  div.paginationPageItem {
+  background: #325ecd;
+  border: 1px solid rgba(32, 67, 90, 0.5);
+  border-radius: 13px;
+  color: #fff;
+}
+
+.tableHeader tbody tr:last-child {
+  border-radius: 20px;
+}
+
+.tableHeader .ant-table-pagination-right {
+  justify-content: flex-start;
+}
+.tableHeader .ant-table-pagination {
+  justify-content: flex-start;
+}
+
+.tableHeader .ant-table-cell-row-hover {
+  background-color: #5075ca !important;
+  color: #fff;
+  cursor: pointer;
+}

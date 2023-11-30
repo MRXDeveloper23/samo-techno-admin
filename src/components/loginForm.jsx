@@ -3,30 +3,27 @@ import { Button, Form, Input, notification } from "antd";
 import Phone from "@/assets/icons/phone.svg";
 import Password from "@/assets/icons/password.svg";
 import { appConfig } from "../config";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
-  console.log(appConfig);
+  const navigate = useNavigate();
   const onLogin = async (values) => {
     try {
       const res = await fetch(`${appConfig.apiBaseUrl}/api/v1/auth/log-in`, {
         method: "POST",
         body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       const response = await res.json();
-      if (response.error) {
-        notification.error({ message: response.message });
-      } else {
+      if (response.success) {
         notification.success({ message: "Muvaffaqiyatli" });
-        localStorage.setItem("kassa_token", response.data.token.access_token);
-        localStorage.setItem(
-          "refresh_token",
-          response.data.token.refresh_token
-        );
-        localStorage.setItem("expiry_date", response.data.token.expires_at);
-        localStorage.setItem("company_id", response.data.company.id);
-        // dispatch(setCompanyId(response.data.company.id));
-        // dispatch(setToken(response.data.token.access_token));
-        // navigate('/', { replace: true });
+        localStorage.setItem("crm_token", response?.data?.accessToken);
+        localStorage.setItem("refresh_token", response?.data?.refreshToken);
+        navigate("/");
+      } else {
+        notification.error({ message: response.message });
       }
     } catch (err) {
       console.log(err);

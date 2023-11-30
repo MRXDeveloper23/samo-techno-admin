@@ -14,7 +14,7 @@ const navlinks = [
   {
     label: "Yangi mahsulot",
     icon: Settings,
-    link: "/product/create",
+    link: "/product",
   },
   {
     label: "Kirim chiqim tarixi",
