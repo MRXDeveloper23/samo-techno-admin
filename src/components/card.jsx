@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { CustomTabs } from "./customTabs";
 import { DatePicker } from "antd";
 
@@ -22,9 +23,13 @@ export const Card = ({ title }) => {
   const changeTabHandler = (value) => {
     console.log(value);
   };
+  const navigate = useNavigate();
   return (
     <div className="bg-[#F6F6F7] rounded-[26px] w-[250px] h-[327px]">
-      <p className="px-[20px] pt-[18px] pb-[4px] underline text-[#C81515] cursor-pointer">
+      <p
+        className="px-[20px] pt-[18px] pb-[4px] underline text-[#C81515] cursor-pointer"
+        onClick={() => navigate("/stat")}
+      >
         {title}
       </p>
       <hr className="border-b-[3px] h-[1px] border-dashed" />

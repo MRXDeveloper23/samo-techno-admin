@@ -7,6 +7,7 @@ export default {
         primary: "#325ECD",
         "row-odd": "rgba(50, 94, 205, 0.1)",
         "row-even": "rgba(210, 223, 255, 0.1)",
+        "search-background": "rgba(32, 67, 90, 0.1)",
       },
       fontFamily: {
         nunito: ["Nunito", "Sans-serif"],

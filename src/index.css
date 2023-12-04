@@ -123,3 +123,15 @@
   color: #fff;
   cursor: pointer;
 }
+
+.filter-group .ant-select-selector {
+  background-color: #d7e1e5 !important;
+  color: #000;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem !important;
+}
+
+.filter-group .ant-select .ant-select-selection-placeholder,
+.filter-group .ant-select .ant-select-arrow {
+  color: #000;
+}
