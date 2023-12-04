@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container } from "../container";
 import { CategorySelect } from "./categorySelect";
 import { SectionSelect } from "./sectionSelect";
+import { ProductInput } from "./productInput";
 
 const sections = ["1. CPU", "2. Mother Board"];
 const groups = ["1. Core i5 11 generation", "2. Core i7 12 generation"];
@@ -10,6 +11,7 @@ const ProductCreate = () => {
   const [category, setCategory] = useState(null);
   const [section, setSection] = useState(null);
   const [group, setGroup] = useState(null);
+  const [productTitle, setProductTitle] = useState("");
   const handleCategoryChange = (e) => setCategory(e.target.value);
   const handleSectionChange = (e) => setSection(e.target.value);
   const handleGroupChange = (e) => setGroup(e.target.value);
@@ -35,6 +37,14 @@ const ProductCreate = () => {
             title={"Guruhni tanlang"}
             section={group}
             onChange={handleGroupChange}
+          />
+        ) : (
+          ""
+        )}
+        {group ? (
+          <ProductInput
+            value={productTitle}
+            onChange={(value) => setProductTitle(value)}
           />
         ) : (
           ""

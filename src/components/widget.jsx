@@ -5,6 +5,7 @@ export const Widget = ({
   children,
   btnText = "Yangi qo'shish",
   btnStyles,
+  onClick,
 }) => {
   return (
     <div className="bg-[#F6F6F7] rounded-[26px] w-[250px] h-[327px] relative">
@@ -16,6 +17,7 @@ export const Widget = ({
 
       <Button
         type="primary"
+        onClick={onClick}
         className={`absolute bottom-0 left-0 w-full h-[50px] rounded-b-[26px] bg-primary rounded-t-none ${btnStyles}`}
       >
         {btnText}
