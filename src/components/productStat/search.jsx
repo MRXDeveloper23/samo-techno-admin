@@ -13,7 +13,7 @@ export const Search = ({ search, setSearch, placeholder = "Qidiruv" }) => {
       <input
         ref={inputRef}
         type="text"
-        value={search}
+        defaultValue={search}
         className="w-full rounded-[20px] h-[60px] px-8 bg-search-background text-[20px] outline-none"
         placeholder={placeholder}
         onKeyDown={(v) => {

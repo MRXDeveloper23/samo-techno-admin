@@ -1,3 +1,5 @@
+import ProductDetails from "./productDetails";
+
 export const reformProductData = (_, page = 0) => {
   const data = [];
   for (let i = 0; i < 10; i++) {
@@ -10,7 +12,14 @@ export const reformProductData = (_, page = 0) => {
       cost: 1,
       totalSum: 43,
       date: "30.11.2023  12:14:16",
-      status: "O'tkazilgan",
+      status: <span className="text-[#19A037]">{"O'tkazilgan"}</span>,
+      more: (
+        <ProductDetails
+          user={"Mamasoliev Khurmatillo"}
+          date={"30.11.2023  12:14:16"}
+          partner={"Abu-Sahiy"}
+        />
+      ),
     });
   }
   return data;
