@@ -1,20 +1,17 @@
-import { errorMiddleware } from "@/services/errorMiddleware";
-import { kassaApiService } from "@/services/api.service";
+import { apiService } from "@/services/api.service";
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
-import authReducer from "./slices/authSlice";
+import authReducer from "./slices/auth";
 import apiErrorReducer from "./slices/apiError";
 
 export const store = configureStore({
   reducer: {
-    [kassaApiService.reducerPath]: kassaApiService.reducer,
+    [apiService.reducerPath]: apiService.reducer,
     auth: authReducer,
     apiError: apiErrorReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(kassaApiService.middleware)
-      .concat(errorMiddleware),
+    getDefaultMiddleware().concat(apiService.middleware),
 });
 
 setupListeners(store.dispatch);

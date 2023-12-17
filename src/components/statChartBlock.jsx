@@ -6,22 +6,16 @@ import { CustomPieChartStat } from "./pieChartStat";
 
 const tabs = [
   {
-    key: "kirim",
+    key: "BUY",
     label: "Kirim",
   },
   {
-    key: "chiqim",
+    key: "SELL",
     label: "Chiqim",
   },
 ];
 
-export const StatChartBlock = () => {
-  const handleYearChange = (value) => {
-    console.log(value);
-  };
-  const changeTabHandler = (value) => {
-    console.log(value);
-  };
+export const StatChartBlock = ({ stats, onYearChange, onTabChange }) => {
   return (
     <div className="w-full rounded-[20px] border border-[#CDD1DD] p-4">
       <div className="flex justify-between">
@@ -30,7 +24,7 @@ export const StatChartBlock = () => {
             defaultValue="2023"
             className="h-[40px]"
             style={{ width: 120 }}
-            onChange={handleYearChange}
+            onChange={onYearChange}
             options={[
               { value: "2023", label: "2023" },
               { value: "2022", label: "2022" },
@@ -40,7 +34,7 @@ export const StatChartBlock = () => {
           <CustomTabs
             classes="w-full px-4"
             panes={tabs}
-            onChangeTab={changeTabHandler}
+            onChangeTab={onTabChange}
             tabBarClasses={
               "flex items-center justify-center w-[100px] h-[40px] gap-2 text-center bg-[#D9E3F0] border ring-white/50 text-primary border-white/20 font-normal font-nunito text-[14px]"
             }
@@ -57,9 +51,9 @@ export const StatChartBlock = () => {
         </Button>
       </div>
       <div className="grid grid-cols-3 items-center justify-around gap-8 h-[300px]">
-        <CustomPieChart />
+        <CustomPieChart stats={stats} />
         <div className="col-span-2">
-          <CustomPieChartStat />
+          <CustomPieChartStat stats={stats} />
         </div>
       </div>
     </div>

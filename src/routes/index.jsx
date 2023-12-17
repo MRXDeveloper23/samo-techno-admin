@@ -5,7 +5,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-// import { PrivateRoute } from "./privateRoute";
+import { PrivateRoute } from "./privateRoute";
 
 const Home = lazy(() => import("@/pages/home"));
 const NotFoundPage = lazy(() => import("@/pages/notFoundPage"));
@@ -22,9 +22,9 @@ export const router = createBrowserRouter(
       <Route
         path="/"
         element={
-          // <PrivateRoute>
-          <Layout />
-          // </PrivateRoute>
+          <PrivateRoute>
+            <Layout />
+          </PrivateRoute>
         }
       >
         <Route index path="/" element={<Home />} />

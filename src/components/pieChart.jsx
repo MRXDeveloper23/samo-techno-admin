@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
 
-const data = [
-  { name: "Group A", value: 400, fill: "#0088FE" },
-  { name: "Group B", value: 300, fill: "#00C49F" },
-  { name: "Group C", value: 300, fill: "#FFBB28" },
-  { name: "Group D", value: 200, fill: "#FF8042" },
-];
-
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const {
@@ -58,7 +51,7 @@ const renderActiveShape = (props) => {
   );
 };
 
-export const CustomPieChart = () => {
+export const CustomPieChart = ({ stats }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const onPieEnter = (_, index) => {
@@ -70,7 +63,7 @@ export const CustomPieChart = () => {
         <Pie
           activeIndex={activeIndex}
           activeShape={renderActiveShape}
-          data={data}
+          data={stats}
           cx="50%"
           cy="50%"
           innerRadius={60}

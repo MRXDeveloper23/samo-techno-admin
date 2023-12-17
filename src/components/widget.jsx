@@ -18,7 +18,7 @@ export const Widget = ({
       <Button
         type="primary"
         onClick={onClick}
-        className={`absolute bottom-0 left-0 w-full h-[50px] rounded-b-[26px] bg-primary rounded-t-none ${btnStyles}`}
+        className={`absolute bottom-[-26px] left-0 w-full h-[50px] rounded-b-[26px] bg-primary rounded-t-none ${btnStyles}`}
       >
         {btnText}
       </Button>

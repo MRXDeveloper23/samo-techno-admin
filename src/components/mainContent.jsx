@@ -4,9 +4,16 @@ import { Container } from "./container";
 import { Card } from "./card";
 import { StatChartBlock } from "./statChartBlock";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useGetPieChartStatsQuery } from "../services/api.service";
+import { reformPieChartStats } from "./reformPieChartStats";
 
 export const MainContent = () => {
   const location = useLocation();
+  const [year, setYear] = useState(2023);
+  const [status, setStatus] = useState("BUY");
+  const { data: pieChartStats } = useGetPieChartStatsQuery({ year, status });
+
   return (
     <Container>
       <div className="mt-8">
@@ -32,7 +39,11 @@ export const MainContent = () => {
         <Card title={"Kirim"} />
         <Card title={"Chiqim"} />
       </div>
-      <StatChartBlock />
+      <StatChartBlock
+        stats={reformPieChartStats(pieChartStats?.data)}
+        onTabChange={(e) => setStatus(e)}
+        onYearChange={(year) => setYear(year)}
+      />
     </Container>
   );
 };

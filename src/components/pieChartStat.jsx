@@ -17,66 +17,30 @@ const MonthlyStat = ({ color, month, value }) => {
   );
 };
 
-const monthData = [
-  {
-    name: "Yanvar",
-    color: "bg-[#335ECC]",
-  },
-  {
-    name: "Fevral",
-    color: "bg-[#50C746]",
-  },
-  {
-    name: "Mart",
-    color: "bg-[#DBB491]",
-  },
-  {
-    name: "Aprel",
-    color: "bg-[#5C9EA0]",
-  },
-  {
-    name: "May",
-    color: "bg-[#D9D9D9]",
-  },
-  {
-    name: "Iyun",
-    color: "bg-[#D9D9D9]",
-  },
-  {
-    name: "Iyul",
-    color: "bg-[#D9D9D9]",
-  },
-  {
-    name: "Avgust",
-    color: "bg-[#D9D9D9]",
-  },
-  {
-    name: "Sentyabr",
-    color: "bg-[#D9D9D9]",
-  },
-  {
-    name: "Oktyabr",
-    color: "bg-[#D9D9D9]",
-  },
-  {
-    name: "Noyabr",
-    color: "bg-[#D9D9D9]",
-  },
-  {
-    name: "Dekabr",
-    color: "bg-[#D9D9D9]",
-  },
-];
+const monthColors = {
+  Yanvar: "bg-[#335ECC]",
+  Fevral: "bg-[#50C746]",
+  Mart: "bg-[#DBB491]",
+  Aprel: "bg-[#5C9EA0]",
+  May: "bg-[#26de9d]",
+  Iyun: "bg-[#E45C5E]",
+  Iyul: "bg-[#D04B2F]",
+  Avgust: "bg-[#7F00FF]",
+  Sentabr: "bg-[#F4D730]",
+  Oktabr: "bg-[#7A5901]",
+  Noyabr: "bg-[#FF3E00]",
+  Dekabr: "bg-[#D9D9D9]",
+};
 
-export const CustomPieChartStat = () => {
+export const CustomPieChartStat = ({ stats }) => {
   return (
     <div className="grid grid-rows-6 grid-flow-col gap-4 gap-x-12 flex-1">
-      {monthData.map((month, i) => (
+      {stats?.map((month, i) => (
         <MonthlyStat
           key={i}
-          color={month.color}
+          color={monthColors[month.name]}
           month={month.name}
-          value={32000000}
+          value={month.value || 0}
         />
       ))}
     </div>
