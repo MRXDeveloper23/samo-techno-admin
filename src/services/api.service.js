@@ -70,6 +70,11 @@ export const apiService = createApi({
         params,
       }),
     }),
+    getCardListStats: builder.query({
+      query: () => ({
+        url: "/v1/statistics/card-list",
+      }),
+    }),
   }),
 });
 
@@ -82,4 +87,5 @@ export const {
   useCreateGroupMutation,
   useCreateProductMutation,
   useGetPieChartStatsQuery,
+  useGetCardListStatsQuery,
 } = apiService;

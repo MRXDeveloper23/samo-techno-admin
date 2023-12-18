@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export const Card = ({ title }) => {
+export const Card = ({ title, cardStats }) => {
   const navigate = useNavigate();
   return (
     <div className="bg-[#F6F6F7] rounded-[26px] w-[250px] h-[327px]">
@@ -22,7 +22,7 @@ export const Card = ({ title }) => {
         </span>
         <br />
         <span className="text-[#4732CD] font-sans text-[19px] font-bold">
-          0
+          {cardStats?.totalProducts || 0}
         </span>
         <br />
         <span className="font-normal text-[14px] font-sans text-[#777B82]">
@@ -30,7 +30,7 @@ export const Card = ({ title }) => {
         </span>
         <br />
         <span className="text-[#4732CD] font-sans text-[19px] font-bold">
-          0
+          {cardStats?.totalPrice || 0}
         </span>
       </div>
     </div>

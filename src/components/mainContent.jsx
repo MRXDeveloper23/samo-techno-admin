@@ -5,14 +5,19 @@ import { Card } from "./card";
 import { StatChartBlock } from "./statChartBlock";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { useGetPieChartStatsQuery } from "../services/api.service";
+import {
+  useGetCardListStatsQuery,
+  useGetPieChartStatsQuery,
+} from "../services/api.service";
 import { reformPieChartStats } from "./reformPieChartStats";
+import { CustomLoading } from "../shared/loading/loading";
 
 export const MainContent = () => {
   const location = useLocation();
   const [year, setYear] = useState(2023);
   const [status, setStatus] = useState("BUY");
   const { data: pieChartStats } = useGetPieChartStatsQuery({ year, status });
+  const { data: cardStats, isFetching } = useGetCardListStatsQuery();
 
   return (
     <Container>
@@ -35,9 +40,15 @@ export const MainContent = () => {
         </div> */}
       </div>
       <div className="flex flex-wrap my-8 gap-4">
-        <Card title={"Ombordagi mahsulotlar"} />
-        <Card title={"Kirim"} />
-        <Card title={"Chiqim"} />
+        {isFetching ? (
+          <div className="w-full h-[300px] flex items-center justify-center">
+            <CustomLoading />
+          </div>
+        ) : (
+          cardStats?.data.map((stat, idx) => (
+            <Card key={idx} title={stat.name} cardStats={stat.response} />
+          ))
+        )}
       </div>
       <StatChartBlock
         stats={reformPieChartStats(pieChartStats?.data)}
