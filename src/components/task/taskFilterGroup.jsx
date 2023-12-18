@@ -2,21 +2,23 @@ import { Select } from "antd";
 import { useState } from "react";
 import { getMonthDays } from "../../utils/getMonthDays";
 import { getAllMonths } from "../../utils/getMonths";
-import { CustomTabs } from "../customTabs";
+import { Search } from "../productStat/search";
+// import { CustomTabs } from "../customTabs";
 
-const tabs = [
-  {
-    key: "BUY",
-    label: "Kirim",
-  },
-  {
-    key: "SELL",
-    label: "Chiqim",
-  },
-];
+// const tabs = [
+//   {
+//     key: "tayyor",
+//     label: "Tayyor",
+//   },
+//   {
+//     key: "qism",
+//     label: "Qism",
+//   },
+// ];
 
-export const TradeFilterGroup = ({ filter, updateFilter, onChangeTab }) => {
-  const { fromDay, fromMonth, fromYear, toDay, toMonth, toYear } = filter;
+export const TaskFilterGroup = ({ filter, updateFilter }) => {
+  const { fromDay, fromMonth, fromYear, toDay, toMonth, toYear, searchString } =
+    filter;
   const [monthDays, setMonthDays] = useState([]);
 
   const getDays = (val, year) => {
@@ -27,18 +29,26 @@ export const TradeFilterGroup = ({ filter, updateFilter, onChangeTab }) => {
     setMonthDays(daysCount);
   };
 
+  //   const changeTabHandler = (value) => {
+  //     console.log(value);
+  //   };
+
   return (
     <div className="my-4">
+      <Search
+        search={searchString}
+        setSearchString={(val) => updateFilter("searchString", val)}
+      />
       <div className="filter-group py-[15px] flex flex-wrap gap-4 justify-between items-center font-nunito">
-        <CustomTabs
+        {/* <CustomTabs
           classes="w-full"
           panes={tabs}
-          onChangeTab={onChangeTab}
+          onChangeTab={changeTabHandler}
           tabBarClasses={
             "flex items-center justify-center w-[90px] h-[32px] gap-2 text-center bg-[#D9E3F0] border ring-white/50 text-primary border-white/20 font-normal font-nunito text-[14px]"
           }
           activeTabBarClasses={"!bg-primary !text-white"}
-        />
+        /> */}
         <div className="flex flex-wrap gap-4 items-center">
           <Select
             placeholder="Yil"

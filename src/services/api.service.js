@@ -75,6 +75,21 @@ export const apiService = createApi({
         url: "/v1/statistics/card-list",
       }),
     }),
+    getCardDetails: builder.query({
+      query: (params) => ({
+        url: "/v1/statistics/card/details/list",
+        method: "POST",
+        body: params,
+      }),
+    }),
+    getHistory: builder.query({
+      query: ({ status, body }) => ({
+        url: "/api/v1/history/all",
+        method: "POST",
+        params: { status },
+        body: body,
+      }),
+    }),
   }),
 });
 
@@ -88,4 +103,6 @@ export const {
   useCreateProductMutation,
   useGetPieChartStatsQuery,
   useGetCardListStatsQuery,
+  useGetCardDetailsQuery,
+  useGetHistoryQuery,
 } = apiService;

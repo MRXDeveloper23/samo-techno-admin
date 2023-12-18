@@ -6,10 +6,15 @@ import { TradeFilterGroup } from "./filterGroup";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import QueryString from "qs";
+import { useGetHistoryQuery } from "../../services/api.service";
+import { CustomLoading } from "../../shared/loading/loading";
+import { CustomPagination } from "../customPagination";
 
 export const TradeHistory = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [status, setStatus] = useState("BUY");
+  const [page, setPage] = useState(1);
   const [filter, setFilter] = useState({
     fromYear: undefined,
     fromMonth: undefined,
@@ -19,6 +24,14 @@ export const TradeHistory = () => {
     toDay: undefined,
     searchString: undefined,
   });
+  const { data: history, isFetching } = useGetHistoryQuery({
+    status: status,
+    body: {
+      page: page - 1,
+      size: 10,
+    },
+  });
+  console.log(history);
 
   const updateFilterHandler = (key, value) => {
     setFilter((prevFilter) => {
@@ -26,6 +39,15 @@ export const TradeHistory = () => {
       navigate(`?${QueryString.stringify(updatedFilter)}`);
       return updatedFilter;
     });
+  };
+
+  const changePageHandler = (page) => {
+    console.log(page);
+    setPage(page);
+  };
+
+  const changeTabHandler = (value) => {
+    setStatus(value);
   };
 
   useEffect(() => {
@@ -52,12 +74,32 @@ export const TradeHistory = () => {
           Qidirish
         </Button>
       </div>
-      <TradeFilterGroup filter={filter} updateFilter={updateFilterHandler} />
-      <div className="flex flex-col gap-4 mt-8">
-        <TradeCard status={"reject"} />
-        <TradeCard status={"output"} />
-        <TradeCard status={"input"} />
-      </div>
+      <TradeFilterGroup
+        filter={filter}
+        updateFilter={updateFilterHandler}
+        onChangeTab={changeTabHandler}
+      />
+      {isFetching ? (
+        <div className="w-full h-[200px] flex items-center justify-center">
+          <CustomLoading />
+        </div>
+      ) : (
+        <div className="flex flex-col gap-4 mt-8">
+          {history?.data?.data.map((trade) => (
+            <TradeCard
+              key={trade.transactionId}
+              trade={trade}
+              status={"input"}
+            />
+          ))}
+          <CustomPagination
+            className="self-end mb-8 tableHeader"
+            onChange={changePageHandler}
+            total={history?.data?.totalPage * history?.data?.size}
+            current={page}
+          />
+        </div>
+      )}
     </div>
   );
 };

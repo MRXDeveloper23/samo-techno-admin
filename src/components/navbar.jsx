@@ -22,9 +22,9 @@ const navlinks = [
     link: "/trade-history",
   },
   {
-    label: "Xodimga topshiriq berish",
+    label: "Topshiriqlar",
     icon: Report,
-    link: "/task",
+    link: "/tasks",
   },
   {
     label: "Xodim tayinlash",

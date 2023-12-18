@@ -1,7 +1,7 @@
 import { CheckCircleTwoTone, CloseCircleFilled } from "@ant-design/icons";
 import CustomUser from "@/assets/icons/custom-user.svg";
 
-export const TradeCard = ({ status }) => {
+export const TradeCard = ({ status, trade }) => {
   let content = (
     <span className="w-[140px] px-8 py-2 rounded-2xl bg-red-500 text-center text-white text-[10px] font-semibold">
       Tasdiqlanmadi
@@ -27,9 +27,9 @@ export const TradeCard = ({ status }) => {
           <span>
             <img src={CustomUser} alt="user" />
           </span>
-          <span className="text-[24px]">Kimdir</span>
+          <span className="text-[24px]">{trade?.fio || ""}</span>
         </div>
-        {status === "reject" ? (
+        {trade?.status === "REJECTED" ? (
           <CloseCircleFilled className="text-red-500 text-2xl cursor-pointer" />
         ) : (
           <CheckCircleTwoTone
@@ -43,7 +43,7 @@ export const TradeCard = ({ status }) => {
         <span className="text-[20px] font-medium text-black/60">
           Qayerdan olib kelindi
         </span>
-        <span className="text-[20px] font-semibold">Abu-Saxiy bozori</span>
+        <span className="text-[20px] font-semibold">{trade?.tradePlace}</span>
       </div>
       <div className="flex justify-between">
         <span className="text-[20px] font-medium text-black/60">Holat</span>
@@ -53,7 +53,7 @@ export const TradeCard = ({ status }) => {
         <span className="text-[20px] font-medium text-black/60">
           Ketgan sana
         </span>
-        <span className="text-[20px] font-semibold">19.06.2021 11:36:13</span>
+        <span className="text-[20px] font-semibold">{trade?.createdDate}</span>
       </div>
     </div>
   );

@@ -15,6 +15,8 @@ const StatsPage = lazy(() => import("@/pages/stat"));
 const TradeHistoryPage = lazy(() => import("@/pages/tradeHistory"));
 const ProductCreate = lazy(() => import("@/components/productCreate"));
 const Layout = lazy(() => import("@/components/layout"));
+const TasksPage = lazy(() => import("@/pages/tasks"));
+const TaskPage = lazy(() => import("@/components/task/task"));
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +34,8 @@ export const router = createBrowserRouter(
         <Route path="product" element={<ProductPage />} />
         <Route path="product/create" element={<ProductCreate />} />
         <Route path="trade-history" element={<TradeHistoryPage />} />
+        <Route path="tasks" element={<TasksPage />} />
+        <Route path="task/:id" element={<TaskPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
