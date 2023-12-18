@@ -2,8 +2,38 @@ import { Button, Input } from "antd";
 import { TradeCard } from "./card";
 
 import { SearchIcon } from "@/utils/icons";
+import { TradeFilterGroup } from "./filterGroup";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import QueryString from "qs";
 
 export const TradeHistory = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState({
+    fromYear: undefined,
+    fromMonth: undefined,
+    fromDay: undefined,
+    toYear: undefined,
+    toMonth: undefined,
+    toDay: undefined,
+    searchString: undefined,
+  });
+
+  const updateFilterHandler = (key, value) => {
+    setFilter((prevFilter) => {
+      const updatedFilter = { ...prevFilter, [key]: value };
+      navigate(`?${QueryString.stringify(updatedFilter)}`);
+      return updatedFilter;
+    });
+  };
+
+  useEffect(() => {
+    const queryParams = QueryString.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+    setFilter((prev) => ({ ...prev, ...queryParams }));
+  }, [location.search]);
   return (
     <div>
       <h1 className="text-[28px] font-nunito font-bold leading-8">
@@ -22,6 +52,7 @@ export const TradeHistory = () => {
           Qidirish
         </Button>
       </div>
+      <TradeFilterGroup filter={filter} updateFilter={updateFilterHandler} />
       <div className="flex flex-col gap-4 mt-8">
         <TradeCard status={"reject"} />
         <TradeCard status={"output"} />

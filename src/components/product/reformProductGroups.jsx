@@ -23,6 +23,7 @@ export const reformProductGroups = (groups = []) => {
       ),
       children: (
         <div className="flex flex-col gap-2">
+          {groups[i]?.children?.length === 0 ? "Mahsulotlar mavjud emas!" : ""}
           {groups[i]?.children.map((groupItem, idx) => {
             return <ProductItem key={idx} name={groupItem?.name} />;
           })}

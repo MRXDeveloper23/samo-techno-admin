@@ -2,10 +2,12 @@ import { Button, Input, Radio, Space, notification } from "antd";
 import { Widget } from "../widget";
 import { useRef, useState } from "react";
 import { useCreateCategoryMutation } from "../../services/api.service";
+import { CustomLoading } from "../../shared/loading/loading";
 
 export const CategorySelect = ({
   categories,
   isSuccess,
+  isFetching,
   refetch,
   category,
   onChange,
@@ -16,7 +18,6 @@ export const CategorySelect = ({
   const [createCategory] = useCreateCategoryMutation();
   const addCategoryHandler = async () => {
     const categoryName = inputRef.current.input.value;
-    console.log(categoryName);
     if (categoryName) {
       const res = await createCategory({
         name: categoryName,
@@ -34,17 +35,23 @@ export const CategorySelect = ({
   return (
     <Widget title={"Kategoriyani tanlang"} onClick={() => setIsActive(true)}>
       <div className="overflow-auto h-[250px]">
-        <Radio.Group onChange={onChange} value={category}>
-          <Space direction="vertical" className="p-4">
-            {isSuccess
-              ? categories?.data.map((category, i) => (
-                  <Radio key={category?.id} value={i}>{`${i + 1}. ${
-                    category?.name
-                  }`}</Radio>
-                ))
-              : ""}
-          </Space>
-        </Radio.Group>
+        {isFetching ? (
+          <div className="w-full h-[200px] flex items-center justify-center">
+            <CustomLoading />
+          </div>
+        ) : (
+          <Radio.Group onChange={onChange} value={category}>
+            <Space direction="vertical" className="p-4">
+              {isSuccess
+                ? categories?.data.map((category, i) => (
+                    <Radio key={category?.id} value={i}>{`${i + 1}. ${
+                      category?.name
+                    }`}</Radio>
+                  ))
+                : ""}
+            </Space>
+          </Radio.Group>
+        )}
         {isActive ? (
           <div className="p-4">
             <Input ref={inputRef} placeholder="Nom kiriting" className="mb-4" />

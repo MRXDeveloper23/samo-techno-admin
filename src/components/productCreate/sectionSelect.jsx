@@ -1,22 +1,38 @@
 import { Button, Input, Radio, Space } from "antd";
 import { Widget } from "../widget";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { CustomLoading } from "../../shared/loading/loading";
 
-export const SectionSelect = ({ options, title, section, onChange, onAdd }) => {
-  const [isActive, setIsActive] = useState(false);
+export const SectionSelect = ({
+  options,
+  title,
+  section,
+  onChange,
+  onAdd,
+  isActive,
+  setIsActive,
+  isFetching,
+  onCreate,
+}) => {
   const inputRef = useRef();
   return (
-    <Widget title={title} onClick={() => setIsActive(true)}>
+    <Widget title={title} onClick={onCreate}>
       <div className="overflow-auto h-[250px]">
-        <Radio.Group onChange={onChange} value={section}>
-          <Space direction="vertical" className="p-4">
-            {options?.map((option, i) => (
-              <Radio key={i} value={option?.id}>
-                {option?.title}
-              </Radio>
-            ))}
-          </Space>
-        </Radio.Group>
+        {isFetching ? (
+          <div className="w-full h-[200px] flex items-center justify-center">
+            <CustomLoading />
+          </div>
+        ) : (
+          <Radio.Group onChange={onChange} value={section}>
+            <Space direction="vertical" className="p-4">
+              {options?.map((option, i) => (
+                <Radio key={i} value={option?.id}>
+                  {option?.title}
+                </Radio>
+              ))}
+            </Space>
+          </Radio.Group>
+        )}
         {isActive ? (
           <div className="p-4">
             <Input ref={inputRef} placeholder="Nom kiriting" className="mb-4" />
