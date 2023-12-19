@@ -29,7 +29,7 @@ export const router = createBrowserRouter(
           </PrivateRoute>
         }
       >
-        <Route index path="/" element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="stat" element={<StatsPage />} />
         <Route path="product" element={<ProductPage />} />
         <Route path="product/create" element={<ProductCreate />} />

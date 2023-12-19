@@ -1,6 +1,16 @@
 import { LoginForm } from "@/components/loginForm";
+import { useAuth } from "@/hooks/useAuth";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const isAuthenticated = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
   return (
     <section className="flex h-screen items-center justify-center bg-primary">
       <div className="rounded-[26px] py-16 px-[110px] w-[742px] bg-white">

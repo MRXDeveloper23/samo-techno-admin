@@ -10,11 +10,11 @@ const ProductDetails = ({ user, date, partner }) => {
         <span className="font-semibold">Tekshirgan shaxs:</span>
         <span>{user}</span>
       </p>
-      <p className="flex justify-between">
+      <p className="flex gap-4 justify-between">
         <span className="font-semibold">Sana:</span>
         <span className="">{date}</span>
       </p>
-      <p className="flex justify-between">
+      <p className="flex gap-4 justify-between">
         <span className="font-semibold">Homiy:</span>
         <span>{partner}</span>
       </p>

@@ -51,14 +51,20 @@ export const FilterGroup = ({ filter, updateFilter }) => {
         />
         <div className="flex flex-wrap gap-4 items-center">
           <Select
+            allowClear
             placeholder="Yil"
             className=""
             style={{ width: 131 }}
-            options={[{ value: "2023" }, { value: "2022" }, { value: "2021" }]}
+            options={[
+              { label: 2023, value: 2023 },
+              { label: 2022, value: 2022 },
+              { label: 2022, value: 2021 },
+            ]}
             value={fromYear || "Yil"}
             onChange={(val) => updateFilter("fromYear", val)}
           />
           <Select
+            allowClear
             placeholder="Oy"
             className=""
             style={{ width: 131 }}
@@ -72,6 +78,7 @@ export const FilterGroup = ({ filter, updateFilter }) => {
             disabled={!fromYear}
           />
           <Select
+            allowClear
             placeholder="Kun"
             className=""
             style={{ width: 131 }}
@@ -82,14 +89,16 @@ export const FilterGroup = ({ filter, updateFilter }) => {
           />
           <span>dan</span>
           <Select
+            allowClear
             placeholder="Yil"
             className=""
             style={{ width: 131 }}
-            options={[{ value: "2023" }, { value: "2022" }, { value: "2021" }]}
+            options={[{ value: 2023 }, { value: 2022 }, { value: "2021" }]}
             value={toYear || "Yil"}
-            onChange={(val) => updateFilter("toYear", val)}
+            onChange={(val) => updateFilter("toYear", +val)}
           />
           <Select
+            allowClear
             placeholder="Oy"
             className=""
             style={{ width: 131 }}
@@ -97,18 +106,19 @@ export const FilterGroup = ({ filter, updateFilter }) => {
             defaultActiveFirstOption={true}
             value={toMonth || "Oy"}
             onChange={(val) => {
-              updateFilter("toMonth", val);
+              updateFilter("toMonth", +val);
               getDays(val, toYear);
             }}
             disabled={!toYear}
           />
           <Select
+            allowClear
             placeholder="Kun"
             className=""
             style={{ width: 131 }}
             value={toDay || "Kun"}
             options={monthDays}
-            onChange={(val) => updateFilter("toDay", val)}
+            onChange={(val) => updateFilter("toDay", +val)}
             disabled={toMonth !== 0 && !toMonth}
           />
           <span>gacha</span>

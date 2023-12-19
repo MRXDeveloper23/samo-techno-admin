@@ -15,14 +15,17 @@ export const TradeHistory = () => {
   const navigate = useNavigate();
   const [status, setStatus] = useState("BUY");
   const [page, setPage] = useState(1);
+  const queryParams = QueryString.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
   const [filter, setFilter] = useState({
-    fromYear: undefined,
-    fromMonth: undefined,
-    fromDay: undefined,
-    toYear: undefined,
-    toMonth: undefined,
-    toDay: undefined,
-    searchString: undefined,
+    fromYear: queryParams.fromYear,
+    fromMonth: queryParams.fromMonth,
+    fromDay: queryParams.fromDay,
+    toYear: queryParams.toYear,
+    toMonth: queryParams.toMonth,
+    toDay: queryParams.toDay,
+    searchString: queryParams.searchString,
   });
   const { data: history, isFetching } = useGetHistoryQuery({
     status: status,

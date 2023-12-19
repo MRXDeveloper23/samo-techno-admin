@@ -41,6 +41,7 @@ export const TradeFilterGroup = ({ filter, updateFilter, onChangeTab }) => {
         />
         <div className="flex flex-wrap gap-4 items-center">
           <Select
+            allowClear
             placeholder="Yil"
             className=""
             style={{ width: 131 }}
@@ -49,6 +50,7 @@ export const TradeFilterGroup = ({ filter, updateFilter, onChangeTab }) => {
             onChange={(val) => updateFilter("fromYear", val)}
           />
           <Select
+            allowClear
             placeholder="Oy"
             className=""
             style={{ width: 131 }}
@@ -62,6 +64,7 @@ export const TradeFilterGroup = ({ filter, updateFilter, onChangeTab }) => {
             disabled={!fromYear}
           />
           <Select
+            allowClear
             placeholder="Kun"
             className=""
             style={{ width: 131 }}
@@ -72,6 +75,7 @@ export const TradeFilterGroup = ({ filter, updateFilter, onChangeTab }) => {
           />
           <span>dan</span>
           <Select
+            allowClear
             placeholder="Yil"
             className=""
             style={{ width: 131 }}
@@ -80,6 +84,7 @@ export const TradeFilterGroup = ({ filter, updateFilter, onChangeTab }) => {
             onChange={(val) => updateFilter("toYear", val)}
           />
           <Select
+            allowClear
             placeholder="Oy"
             className=""
             style={{ width: 131 }}
@@ -93,6 +98,7 @@ export const TradeFilterGroup = ({ filter, updateFilter, onChangeTab }) => {
             disabled={!toYear}
           />
           <Select
+            allowClear
             placeholder="Kun"
             className=""
             style={{ width: 131 }}

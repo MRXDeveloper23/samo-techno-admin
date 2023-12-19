@@ -1,6 +1,7 @@
 import ReloadSvg from "@/assets/icons/reload.svg";
+import { formatNumber } from "../../utils/formatNumber";
 
-export const StatsWidget = () => {
+export const StatsWidget = ({ totalSums }) => {
   //   const { year, month, day, module } = filter;
 
   return (
@@ -22,7 +23,7 @@ export const StatsWidget = () => {
         <div className="stats-widget__body flex w-full">
           <div className="body-item w-1/2 text-center pb-[30px] pt-[40px]">
             <h4 className="text-4xl font-semibold text-primary pb-[10px]">
-              {4371}
+              {totalSums?.totalProducts}
             </h4>
             <span className="text-primary font-medium text-lg">
               Jami Mahsulotlar Soni
@@ -33,12 +34,10 @@ export const StatsWidget = () => {
           </div>
           <div className="body-item w-1/2 text-center pb-[30px] pt-[40px]">
             <h4 className="text-4xl font-semibold text-[#2FAE5A] pb-[10px]">
-              6 000 000 UZS
+              {formatNumber(totalSums?.totalSums)} UZS
             </h4>
             <span className="text-[#2FAE5A] font-medium text-lg">
-              TaxPayga hisoblangan xizmat haqi
-              <br />
-              summasi
+              Jami Mahsulotlar Summasi
             </span>
           </div>
         </div>

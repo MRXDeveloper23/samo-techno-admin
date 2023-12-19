@@ -135,3 +135,11 @@
 .filter-group .ant-select .ant-select-arrow {
   color: #000;
 }
+
+.filter-group .ant-select-clear {
+  background: #d7e1e5;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  z-index: 1;
+}

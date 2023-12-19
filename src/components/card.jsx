@@ -1,12 +1,18 @@
 import { useNavigate } from "react-router-dom";
 
+const cardTypes = {
+  "Omborda mavjud mahsulotlar": "PRESENT",
+  "Sotib olingan": "BOUGHT",
+  Sotilgan: "SOLD",
+};
+
 export const Card = ({ title, cardStats }) => {
   const navigate = useNavigate();
   return (
-    <div className="bg-[#F6F6F7] rounded-[26px] w-[250px] h-[327px]">
+    <div className="bg-[#F6F6F7] rounded-[26px] w-[280px] h-[327px]">
       <p
         className="px-[20px] pt-[18px] pb-[4px] underline text-[#C81515] cursor-pointer"
-        onClick={() => navigate("/stat")}
+        onClick={() => navigate(`/stat?cardType=${cardTypes[title]}`)}
       >
         {title}
       </p>

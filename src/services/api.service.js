@@ -90,6 +90,14 @@ export const apiService = createApi({
         body: body,
       }),
     }),
+    getInProductsAll: builder.query({
+      query: (parentId) => ({
+        url: "/v1/in-products/all",
+        params: {
+          parentId,
+        },
+      }),
+    }),
   }),
 });
 
@@ -105,4 +113,5 @@ export const {
   useGetCardListStatsQuery,
   useGetCardDetailsQuery,
   useGetHistoryQuery,
+  useLazyGetInProductsAllQuery,
 } = apiService;
