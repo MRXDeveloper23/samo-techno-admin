@@ -51,16 +51,10 @@ const TasksPage = () => {
   }, [location.search]);
   return (
     <Container>
-      <h1 className="text-[28px] font-nunito font-bold leading-8">
-        Topshiriqlar
-      </h1>
-      <TaskFilterGroup filter={filter} updateFilter={updateFilterHandler} />
-      <div className="flex flex-col gap-4">
-        {tasks.map((task) => (
-          <TaskCard key={task.id} task={task} />
-        ))}
-      </div>
-      <div className="flex justify-end mt-8">
+      <div className="flex justify-between">
+        <h1 className="text-[28px] font-nunito font-bold leading-8">
+          Topshiriqlar
+        </h1>
         <Button
           type="primary"
           icon={<img src={Add} alt="add" />}
@@ -69,6 +63,13 @@ const TasksPage = () => {
         >
           {"Qo‘shish"}
         </Button>
+      </div>
+
+      <TaskFilterGroup filter={filter} updateFilter={updateFilterHandler} />
+      <div className="flex flex-col gap-4">
+        {tasks.map((task) => (
+          <TaskCard key={task.id} task={task} />
+        ))}
       </div>
     </Container>
   );

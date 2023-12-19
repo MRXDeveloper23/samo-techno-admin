@@ -31,7 +31,6 @@ export const TradeHistory = () => {
       size: 10,
     },
   });
-  console.log(history);
 
   const updateFilterHandler = (key, value) => {
     setFilter((prevFilter) => {
@@ -86,16 +85,12 @@ export const TradeHistory = () => {
       ) : (
         <div className="flex flex-col gap-4 mt-8">
           {history?.data?.data.map((trade) => (
-            <TradeCard
-              key={trade.transactionId}
-              trade={trade}
-              status={"input"}
-            />
+            <TradeCard key={trade.transactionId} trade={trade} />
           ))}
           <CustomPagination
             className="self-end mb-8 tableHeader"
             onChange={changePageHandler}
-            total={history?.data?.totalPage * history?.data?.size}
+            total={history?.data?.totalPage * history?.data?.size || 0}
             current={page}
           />
         </div>

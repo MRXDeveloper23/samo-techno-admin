@@ -1,22 +1,18 @@
 import { CheckCircleTwoTone, CloseCircleFilled } from "@ant-design/icons";
 import CustomUser from "@/assets/icons/custom-user.svg";
 
-export const TradeCard = ({ status, trade }) => {
-  let content = (
-    <span className="w-[140px] px-8 py-2 rounded-2xl bg-red-500 text-center text-white text-[10px] font-semibold">
-      Tasdiqlanmadi
-    </span>
-  );
-  if (status === "input") {
+export const TradeCard = ({ trade }) => {
+  let content;
+  if (trade?.tradeStatus === "BUY") {
     content = (
       <span className="w-[140px] px-8 py-2 rounded-2xl bg-green-500 text-center text-white text-[10px] font-semibold">
-        Kirim
+        Sotib olindi
       </span>
     );
-  } else if (status === "output") {
+  } else if (trade?.tradeStatus === "SELL") {
     content = (
       <span className="w-[140px] px-8 py-2 rounded-2xl bg-yellow-500 text-center text-white text-[10px] font-semibold">
-        Chiqim
+        Sotildi
       </span>
     );
   }

@@ -12,7 +12,7 @@ import {
 import { CustomLoading } from "../shared/loading/loading";
 
 export default function Product() {
-  const [category, setCategory] = useState(1);
+  const [category, setCategory] = useState(0);
   const [selectedSection, setSelectedSection] = useState(null);
   const [groups, setGroups] = useState([]);
   const navigate = useNavigate();
