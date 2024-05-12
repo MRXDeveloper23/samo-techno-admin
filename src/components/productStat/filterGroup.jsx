@@ -1,6 +1,5 @@
 import { Select } from "antd";
 import { useState } from "react";
-import { Search } from "./search";
 import { getMonthDays } from "../../utils/getMonthDays";
 import { getAllMonths } from "../../utils/getMonths";
 import { CustomTabs } from "../customTabs";
@@ -17,8 +16,7 @@ const tabs = [
 ];
 
 export const FilterGroup = ({ filter, updateFilter }) => {
-  const { fromDay, fromMonth, fromYear, toDay, toMonth, toYear, searchString } =
-    filter;
+  const { fromDay, fromMonth, fromYear, toDay, toMonth, toYear } = filter;
   const [monthDays, setMonthDays] = useState([]);
 
   const getDays = (val, year) => {
@@ -35,10 +33,6 @@ export const FilterGroup = ({ filter, updateFilter }) => {
 
   return (
     <div className="my-4">
-      <Search
-        search={searchString}
-        setSearchString={(val) => updateFilter("searchString", val)}
-      />
       <div className="filter-group py-[15px] flex flex-wrap gap-4 justify-between items-center font-nunito">
         <CustomTabs
           classes="w-full"

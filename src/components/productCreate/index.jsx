@@ -11,6 +11,7 @@ import {
   useLazyGetSectionGroupsQuery,
 } from "../../services/api.service";
 import { notification } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const ProductCreate = () => {
   const [category, setCategory] = useState(null);
@@ -55,6 +56,7 @@ const ProductCreate = () => {
   const [createSection] = useCreateSectionMutation();
   const [createGroup] = useCreateGroupMutation();
   const [createProduct] = useCreateProductMutation();
+  const navigate = useNavigate();
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
@@ -115,6 +117,7 @@ const ProductCreate = () => {
         });
         nameRef.current.input.value = "";
         descRef.current.resizableTextArea.textArea.value = "";
+        navigate("/product");
       }
     }
   };

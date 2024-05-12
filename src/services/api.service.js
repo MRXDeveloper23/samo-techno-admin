@@ -106,6 +106,14 @@ export const apiService = createApi({
         },
       }),
     }),
+    searchInProducts: builder.query({
+      query: (param) => ({
+        url: "/v1/in-products/search",
+        params: {
+          param,
+        },
+      }),
+    }),
   }),
 });
 
@@ -123,4 +131,5 @@ export const {
   useGetHistoryQuery,
   useLazyGetInProductsAllQuery,
   useLazySearchProductQuery,
+  useLazySearchInProductsQuery,
 } = apiService;

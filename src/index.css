@@ -147,3 +147,9 @@
 .input-search button {
   background-color: #325ecd;
 }
+.input-search .ant-input-affix-wrapper {
+  padding: 1rem;
+}
+.input-search .ant-input-search-button {
+  height: 57px;
+}

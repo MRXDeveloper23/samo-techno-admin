@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "../components/container";
 import { ProductCategory, ProductSection } from "../components/product";
 import ProductGroup from "../components/product/group";
@@ -21,8 +21,8 @@ export default function Product() {
   const [searchTerm, setSearchTerm] = useState("");
   const [form] = Form.useForm();
 
+  const { data: categories, refetch, isFetching } = useGetCategoriesQuery();
   const navigate = useNavigate();
-  const { data: categories, isFetching } = useGetCategoriesQuery();
   const [getProductGroups, { isFetching: isGroupsFetching }] =
     useLazyGetProductGroupsQuery();
   const [searchProduct, { isFetching: isSearchFetching }] =
@@ -70,6 +70,10 @@ export default function Product() {
       }, 200);
     }
   });
+
+  useEffect(() => {
+    refetch();
+  }, [navigate]);
 
   return (
     <Container>
