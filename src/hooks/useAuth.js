@@ -13,4 +13,5 @@ function isTokenExpired(token) {
 export function useAuth() {
   const token = localStorage.getItem("crm_token");
   return !!token && !isTokenExpired(token);
+  // return true;
 }

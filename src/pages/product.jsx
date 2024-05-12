@@ -2,23 +2,31 @@ import { useState } from "react";
 import { Container } from "../components/container";
 import { ProductCategory, ProductSection } from "../components/product";
 import ProductGroup from "../components/product/group";
-import { Button } from "antd";
+import { Button, Form } from "antd";
 import Add from "@/assets/icons/add.svg";
 import { useNavigate } from "react-router-dom";
 import {
   useGetCategoriesQuery,
   useLazyGetProductGroupsQuery,
+  useLazySearchProductQuery,
 } from "../services/api.service";
 import { CustomLoading } from "../shared/loading/loading";
+import Search from "antd/es/input/Search";
 
 export default function Product() {
   const [category, setCategory] = useState(0);
   const [selectedSection, setSelectedSection] = useState(null);
   const [groups, setGroups] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [form] = Form.useForm();
+
   const navigate = useNavigate();
   const { data: categories, isFetching } = useGetCategoriesQuery();
   const [getProductGroups, { isFetching: isGroupsFetching }] =
     useLazyGetProductGroupsQuery();
+  const [searchProduct, { isFetching: isSearchFetching }] =
+    useLazySearchProductQuery();
 
   const sectionClickHandler = async (parentId) => {
     setSelectedSection(parentId);
@@ -26,6 +34,43 @@ export default function Product() {
     console.log(res?.data?.data);
     setGroups(res?.data?.data);
   };
+
+  const onSearch = async (value) => {
+    setIsSearching(true);
+    const res = await searchProduct(value);
+    setGroups(res?.data?.data);
+  };
+  const handleSearchInput = async (e) => {
+    if (e.target.value === "") {
+      setIsSearching(false);
+    }
+  };
+
+  let code = "";
+  let reading = false;
+
+  document.addEventListener("keypress", (e) => {
+    if (e.code === "Enter") {
+      if (code.length > 10) {
+        console.log("Barcode: ", code);
+        setSearchTerm(code);
+        form.setFieldValue("searchTerm", code);
+        onSearch();
+        code = "";
+      }
+    } else {
+      code += e.key;
+    }
+
+    if (!reading) {
+      reading = true;
+      setTimeout(() => {
+        code = "";
+        reading = false;
+      }, 200);
+    }
+  });
+
   return (
     <Container>
       <div className="flex justify-between">
@@ -41,8 +86,27 @@ export default function Product() {
           {"Qo‘shish"}
         </Button>
       </div>
+      <div className="my-4">
+        <Form form={form} initialValues={{}}>
+          <Form.Item name={"searchTerm"}>
+            <Search
+              loading={isSearchFetching}
+              className="input-search"
+              placeholder="Mahsulot nomi yoki shtrix kod"
+              allowClear
+              enterButton="Search"
+              size="large"
+              onSearch={onSearch}
+              value={searchTerm}
+              onChange={handleSearchInput}
+            />
+          </Form.Item>
+        </Form>
+      </div>
 
-      {isFetching ? (
+      {isSearching ? (
+        <ProductGroup groups={groups} />
+      ) : isFetching ? (
         <CustomLoading />
       ) : (
         <>

@@ -12,7 +12,7 @@ const navlinks = [
     link: "/",
   },
   {
-    label: "Yangi mahsulot",
+    label: "Mahsulotlar",
     icon: Settings,
     link: "/product",
   },

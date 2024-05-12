@@ -1,7 +1,12 @@
 import { Input, Space } from "antd";
 import { Widget } from "../widget";
 
-export const ProductInput = ({ nameRef, descRef, onCreateProduct }) => {
+export const ProductInput = ({
+  barcode,
+  nameRef,
+  descRef,
+  onCreateProduct,
+}) => {
   return (
     <Widget
       title={"Mahsulotni nomini kiriting"}
@@ -10,6 +15,12 @@ export const ProductInput = ({ nameRef, descRef, onCreateProduct }) => {
       onClick={onCreateProduct}
     >
       <Space direction="vertical" className="w-full p-4">
+        <Input
+          disabled={true}
+          className=""
+          placeholder="Shtrix kod"
+          value={barcode}
+        />
         <Input
           ref={nameRef}
           className=""

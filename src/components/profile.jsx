@@ -26,9 +26,7 @@ export const Profile = () => {
       </span>
       <div className="flex flex-col nunito-text leading-[14px] text-white">
         <div className="flex">
-          <span className="text-[14px] font-medium">
-            Mamasoliev Khurmatillo
-          </span>
+          <span className="text-[14px] font-medium">Polonchiyev Pistonchi</span>
           <Popover
             arrow={false}
             trigger={"hover"}
@@ -48,7 +46,7 @@ export const Profile = () => {
           </Popover>
         </div>
         <span className="text-[12px] font-light">
-          Telefon raqami: 973462512
+          Telefon raqami: 99 999 99 99
         </span>
       </div>
     </div>

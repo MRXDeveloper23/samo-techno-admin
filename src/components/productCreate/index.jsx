@@ -20,6 +20,30 @@ const ProductCreate = () => {
   const descRef = useRef();
   const [isSectionActive, setIsSectionActive] = useState(false);
   const [isGroupActive, setIsGroupActive] = useState(false);
+  const [barcode, setBarcode] = useState("");
+  let code = "";
+  let reading = false;
+
+  document.addEventListener("keypress", (e) => {
+    if (e.code === "Enter") {
+      if (code.length > 10) {
+        console.log("Barcode: ", code);
+        setBarcode(code);
+        code = "";
+      }
+    } else {
+      code += e.key;
+    }
+
+    if (!reading) {
+      reading = true;
+      setTimeout(() => {
+        code = "";
+        reading = false;
+      }, 200);
+    }
+  });
+
   const {
     data: categories,
     refetch,
@@ -82,6 +106,7 @@ const ProductCreate = () => {
       const res = await createProduct({
         name: nameRef.current.input.value,
         description: descRef.current.resizableTextArea.textArea.value,
+        code: barcode,
         productGroupId: group,
       });
       if (res?.data?.success) {
@@ -146,6 +171,7 @@ const ProductCreate = () => {
           <ProductInput
             nameRef={nameRef}
             descRef={descRef}
+            barcode={barcode}
             onCreateProduct={handleCreateProduct}
           />
         ) : (

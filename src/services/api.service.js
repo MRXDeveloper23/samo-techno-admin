@@ -98,6 +98,14 @@ export const apiService = createApi({
         },
       }),
     }),
+    searchProduct: builder.query({
+      query: (param) => ({
+        url: "/v1/products/search",
+        params: {
+          param,
+        },
+      }),
+    }),
   }),
 });
 
@@ -114,4 +122,5 @@ export const {
   useGetCardDetailsQuery,
   useGetHistoryQuery,
   useLazyGetInProductsAllQuery,
+  useLazySearchProductQuery,
 } = apiService;
